@@ -1,0 +1,2 @@
+port: 3002
+connection_string: "mongodb://root:password@mongodb:27017"
