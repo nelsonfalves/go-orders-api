@@ -37,6 +37,8 @@ func TestGetAllOrders_Success(t *testing.T) {
 	assert.Equal(t, float32(100), orders[0].Total)
 	assert.Equal(t, "ready", orders[0].Status)
 	assert.True(t, orders[0].CreatedAt.After(time.Date(2021, 1, 1, 0, 0, 0, 0, time.Local)))
+
+	mockRepo.AssertExpectations(t)
 }
 
 func TestGetOrderById_Success(t *testing.T) {
@@ -68,6 +70,7 @@ func TestGetOrderById_Success(t *testing.T) {
 	assert.Equal(t, float32(100), order.Total)
 	assert.Equal(t, "ready", order.Status)
 	assert.True(t, order.CreatedAt.After(time.Date(2021, 1, 1, 0, 0, 0, 0, time.Local)))
+	mockRepo.AssertExpectations(t)
 }
 
 func TestCreateOrder_Success(t *testing.T) {
@@ -101,6 +104,8 @@ func TestCreateOrder_Success(t *testing.T) {
 	assert.Equal(t, "product3", order.Products[2])
 	assert.Equal(t, float32(100), order.Total)
 	assert.Equal(t, "ready", order.Status)
+
+	mockRepo.AssertExpectations(t)
 }
 
 func TestUpdateOrder_Success(t *testing.T) {
@@ -128,6 +133,8 @@ func TestUpdateOrder_Success(t *testing.T) {
 	assert.Equal(t, "product3", order.Products[2])
 	assert.Equal(t, float32(100), order.Total)
 	assert.Equal(t, "ready", order.Status)
+
+	mockRepo.AssertExpectations(t)
 }
 
 func TestDeleteOrder_Success(t *testing.T) {
