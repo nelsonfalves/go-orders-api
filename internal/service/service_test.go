@@ -140,7 +140,7 @@ func TestUpdateOrder_Success(t *testing.T) {
 func TestDeleteOrder_Success(t *testing.T) {
 	mockRepo := &mockRepository{}
 
-	mockRepo.On("GetOrderById", "xpto").Return(canonical.Order{
+	orderTest := canonical.Order{
 		Id: "xpto",
 		Products: []string{
 			"product1", "product2", "product3",
@@ -148,7 +148,9 @@ func TestDeleteOrder_Success(t *testing.T) {
 		Total:     100,
 		Status:    "ready",
 		CreatedAt: time.Now(),
-	}, nil)
+	}
+
+	mockRepo.On("GetOrderById", "xpto").Return(orderTest, nil)
 
 	mockRepo.On("DeleteOrder", "xpto").Return(nil)
 
