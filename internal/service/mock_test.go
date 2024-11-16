@@ -5,31 +5,31 @@ import (
 	"github.com/stretchr/testify/mock"
 )
 
-type mockRepository struct {
+type MockRepository struct {
 	mock.Mock
 }
 
-func (m *mockRepository) GetAllOrders() ([]canonical.Order, error) {
+func (m *MockRepository) GetAllOrders() ([]canonical.Order, error) {
 	args := m.Called()
 	return args.Get(0).([]canonical.Order), args.Error(1)
 }
 
-func (m *mockRepository) GetOrderById(id string) (canonical.Order, error) {
+func (m *MockRepository) GetOrderById(id string) (canonical.Order, error) {
 	args := m.Called(id)
 	return args.Get(0).(canonical.Order), args.Error(1)
 }
 
-func (m *mockRepository) CreateOrder(order canonical.Order) (canonical.Order, error) {
+func (m *MockRepository) CreateOrder(order canonical.Order) (canonical.Order, error) {
 	args := m.Called(order)
 	return args.Get(0).(canonical.Order), args.Error(1)
 }
 
-func (m *mockRepository) UpdateOrder(id string, order canonical.Order) (canonical.Order, error) {
+func (m *MockRepository) UpdateOrder(id string, order canonical.Order) (canonical.Order, error) {
 	args := m.Called(id, order)
 	return args.Get(0).(canonical.Order), args.Error(1)
 }
 
-func (m *mockRepository) DeleteOrder(id string) error {
+func (m *MockRepository) DeleteOrder(id string) error {
 	args := m.Called(id)
 	return args.Error(0)
 }

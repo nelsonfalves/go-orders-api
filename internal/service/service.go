@@ -2,11 +2,12 @@ package service
 
 import (
 	"fmt"
+	"time"
+
 	"github.com/google/uuid"
 	"github.com/nelsonalves117/go-orders-api/internal/canonical"
 	"github.com/nelsonalves117/go-orders-api/internal/repositories"
 	"github.com/sirupsen/logrus"
-	"time"
 )
 
 type Service interface {
@@ -30,7 +31,7 @@ func New() Service {
 func (service *service) GetAllOrders() ([]canonical.Order, error) {
 	order, err := service.repo.GetAllOrders()
 	if err != nil {
-		logrus.WithError(err).Error("error occurred when trying to get all orders") // Error at beginning of file
+		logrus.WithError(err).Error("error occurred when trying to get all orders")
 		return []canonical.Order{}, err
 	}
 
