@@ -7,10 +7,10 @@ import (
 )
 
 var (
-	config Cfg
+	config cfg
 )
 
-type Cfg struct {
+type cfg struct {
 	Port             string `fig:"port"`
 	ConnectionString string `fig:"connection_string"`
 }
@@ -23,6 +23,6 @@ func Parse() error {
 	return nil
 }
 
-func Get() Cfg {
+func Get() cfg {
 	return config
 }
